@@ -1,0 +1,130 @@
+--- tdesktop/Telegram/SourceFiles/ayu/sync/ayu_sync_controller.h 2023-07-09 13:59:32.938401231 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/sync/ayu_sync_controller.h 2023-07-09 14:47:15.108199108 +0300
+@@ -6,6 +6,7 @@
+ // Copyright @Radolyn, 2023
+
+ #pragma once
++#if 0
+
+ #include "ayu/libs/json.hpp"
+ #include "utils/ayu_pipe_wrapper.h"
+@@ -38,3 +39,4 @@
+     bool isAgentDownloaded();
+     bool isAgentRunning();
+ }
++#endif
+
+--- tdesktop/Telegram/SourceFiles/ayu/sync/ayu_sync_controller.cpp 2023-07-20 21:38:52.919351141 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/sync/ayu_sync_controller.cpp 2023-07-20 21:57:15.477084255 +0300
+@@ -4,6 +4,7 @@
+ // but be respectful and credit the original author.
+ //
+ // Copyright @Radolyn, 2023
++#if 0
+
+ #include "ayu_sync_controller.h"
+ #include "ayu/libs/process.hpp"
+@@ -219,3 +220,4 @@
+ 		});
+ 	}
+ }
++#endif
+
+--- tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp 2023-07-20 21:00:08.629057834 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp 2023-07-20 21:25:35.117733156 +0300
+@@ -382,6 +382,7 @@
+ 			});
+ 	}
+
++#if 0
+ 	void Ayu::SetupAyuSync(not_null<Ui::VerticalLayout*> container)
+ 	{
+ 		AddSubsectionTitle(container, tr::ayu_AyuSyncHeader());
+@@ -398,6 +399,7 @@
+ 			controller->initializeAgent();
+ 		});
+ 	}
++#endif
+
+ 	void Ayu::SetupSendConfirmations(not_null<Ui::VerticalLayout*> container)
+ 	{
+@@ -476,7 +478,9 @@
+ 		SetupCustomization(container, controller);
+
+ 		AddSkip(container);
++#if 0
+ 		SetupAyuSync(container);
++#endif
+
+ 		AddDivider(container);
+
+--- tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.h 2023-07-20 21:00:08.629057834 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.h 2023-07-20 21:27:27.413171313 +0300
+@@ -41,7 +41,9 @@
+
+ 		void SetupRecentStickersLimitSlider(not_null<Ui::VerticalLayout*> container);
+
++#if 0
+ 		void SetupAyuSync(not_null<Ui::VerticalLayout*> container);
++#endif
+
+ 		void SetupSendConfirmations(not_null<Ui::VerticalLayout*> container);
+
+
+--- tdesktop/Telegram/SourceFiles/ayu/sync/utils/ayu_pipe_wrapper.h 2023-07-09 13:59:32.938401231 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/sync/utils/ayu_pipe_wrapper.h 2023-07-09 15:58:23.127546684 +0300
+@@ -4,6 +4,7 @@
+ // but be respectful and credit the original author.
+ //
+ // Copyright @Radolyn, 2023
++#if 0
+
+ #pragma once
+
+@@ -23,3 +24,4 @@
+ private:
+     nes::pipe_istream is{"AyuSync"};
+ };
++#endif
+
+--- tdesktop/Telegram/SourceFiles/ayu/sync/utils/ayu_pipe_wrapper.cpp 2023-07-20 21:28:46.677990266 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/sync/utils/ayu_pipe_wrapper.cpp 2023-07-20 21:33:42.090193184 +0300
+@@ -4,6 +4,7 @@
+ // but be respectful and credit the original author.
+ //
+ // Copyright @Radolyn, 2023
++#if 0
+
+ #include "ayu_pipe_wrapper.h"
+ #include <sstream>
+@@ -66,3 +67,4 @@
+ 	auto p = json::parse(sb.str());
+ 	return p;
+ }
++#endif
+
+--- tdesktop/Telegram/SourceFiles/ayu/sync/utils/process_utils.hpp 2023-07-20 22:56:14.455747079 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/sync/utils/process_utils.hpp 2023-07-20 22:58:43.185744340 +0300
+@@ -1,3 +1,4 @@
++#if 0
+ #include <codecvt>
+ #include <iostream>
+ #include <locale>
+@@ -94,3 +95,4 @@
+ 	throw std::logic_error("not implemented");
+ #endif
+ }
++#endif
+
+--- tdesktop/Telegram/SourceFiles/data/data_histories.cpp 2023-07-20 22:12:42.055588895 +0300
++++ tdesktop/Telegram/SourceFiles/data/data_histories.cpp 2023-07-20 22:13:06.299330458 +0300
+@@ -178,7 +178,9 @@
+
+ 	Core::App().notifications().clearIncomingFromHistory(history);
+
++#if 0
+ 	AyuSync::getInstance().syncRead(history, tillId);
++#endif
+
+ 	// AyuGram sendReadPackets
+ 	const auto settings = &AyuSettings::getInstance();

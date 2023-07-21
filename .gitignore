@@ -1,0 +1,8 @@
+tdesktop
+telegram-*
+cppgir*
+
+pkg/
+src/
+
+*.tar.zst
