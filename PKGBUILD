@@ -110,7 +110,7 @@ prepare() {
         patch -i $patch_filepath -u -p0 -N -r- || true
     done
 
-    if [ -n $PATCH_QT_SCALING ]; then
+    if [[ $PATCH_QT_SCALING -eq 1 ]]; then
         echo "Applying QT_SCALE_FACTOR patch!"
 
         patch -i qt_scale_factor-fix.patch_ -u -p0 -N -r- || true
