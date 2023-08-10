@@ -30,9 +30,9 @@
  }
 +#endif
 
---- tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp 2023-07-20 21:00:08.629057834 +0300
-+++ tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp 2023-07-20 21:25:35.117733156 +0300
-@@ -382,6 +382,7 @@
+--- tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp.orig	2023-08-10 22:07:31.662752574 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp.new	2023-08-10 22:13:04.175455039 +0300
+@@ -719,6 +719,7 @@
  			});
  	}
 
@@ -40,7 +40,7 @@
  	void Ayu::SetupAyuSync(not_null<Ui::VerticalLayout*> container)
  	{
  		AddSubsectionTitle(container, tr::ayu_AyuSyncHeader());
-@@ -398,6 +399,7 @@
+@@ -735,6 +736,7 @@
  			controller->initializeAgent();
  		});
  	}
@@ -48,15 +48,22 @@
 
  	void Ayu::SetupSendConfirmations(not_null<Ui::VerticalLayout*> container)
  	{
-@@ -476,7 +478,9 @@
- 		SetupCustomization(container, controller);
-
+@@ -817,6 +819,7 @@
  		AddSkip(container);
+ 		AddDividerText(container, tr::ayu_SettingsCustomizationHint());
+
 +#if 0
- 		SetupAyuSync(container);
+ 		// todo: compilation flag
+ 		if (false)
+ 		{
+@@ -826,6 +829,7 @@
+
+ 			AddDivider(container);
+ 		}
 +#endif
 
- 		AddDivider(container);
+ 		AddSkip(container);
+ 		SetupSendConfirmations(container);
 
 --- tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.h 2023-07-20 21:00:08.629057834 +0300
 +++ tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.h 2023-07-20 21:27:27.413171313 +0300
