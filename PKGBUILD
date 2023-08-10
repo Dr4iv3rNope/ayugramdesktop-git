@@ -18,7 +18,7 @@ provides=("ayugram")
 conflicts=("ayugram")
 source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git"
         "telegram-desktop-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
-        "telegram-desktop-GSL::git+https://github.com/Microsoft/GSL.git"
+        "telegram-desktop-GSL::git+https://github.com/desktop-app/GSL.git"
         "telegram-desktop-xxHash::git+https://github.com/Cyan4973/xxHash.git"
         "telegram-desktop-rlottie::git+https://github.com/desktop-app/rlottie.git"
         "telegram-desktop-lz4::git+https://github.com/lz4/lz4.git"
