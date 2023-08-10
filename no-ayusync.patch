@@ -30,8 +30,8 @@
  }
 +#endif
 
---- tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp.orig	2023-08-10 22:07:31.662752574 +0300
-+++ tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp.new	2023-08-10 22:13:04.175455039 +0300
+--- tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp 2023-08-10 22:07:31.662752574 +0300
++++ tdesktop/Telegram/SourceFiles/ayu/ui/settings/settings_ayu.cpp 2023-08-10 22:13:04.175455039 +0300
 @@ -719,6 +719,7 @@
  			});
  	}
