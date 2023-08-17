@@ -6,12 +6,12 @@ arch=('x86_64')
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm-2.68'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
          'openssl-1.1' 'protobuf')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection')
+             'gobject-introspection' 'mm-common')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=("ayugram")
@@ -53,11 +53,11 @@ source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git"
         "telegram-desktop-cld3::git+https://github.com/google/cld3.git"
         "cppgir::git+https://gitlab.com/mnauw/cppgir.git"
         "cppgir-expected-lite::git+https://github.com/martinmoene/expected-lite.git"
+        "https://download.gnome.org/sources/glibmm/2.77/glibmm-2.77.0.tar.xz"
         "fix-arch-linux-desktop-portal.patch"
         "no-ayusync.patch"
         "workaround-for-dbusactivatable.patch"
         "qt_scale_factor-fix.patch_"
-        "workaround-for-newer-package-glibmm-2.68.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -172,13 +172,19 @@ prepare() {
 }
 
 build() {
+    # Telegram is using unstable glibmm, so we need to compile it
+    meson setup -D maintainer-mode=true --default-library static --prefix "$srcdir/glibmm" glibmm-2.77.0 glibmm-build
+    meson compile -C glibmm-build
+    meson install -C glibmm-build
+
     cd "$srcdir/tdesktop"
 
-    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig:$srcdir/glibmm/lib/pkgconfig'
     cmake \
         -B build \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_PREFIX_PATH="$srcdir/glibmm" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=2040 \
         -DTDESKTOP_API_HASH=b18441a1ff607e10a989891a5462e627 \
