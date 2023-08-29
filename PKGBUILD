@@ -58,10 +58,8 @@ source=("tdesktop::git+https://github.com/AyuGram/AyuGramDesktop.git"
         "no-ayusync.patch"
         "workaround-for-dbusactivatable.patch"
         "qt_scale_factor-fix.patch_"
-        "mainsession.cpp-build-fix.patch"
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
