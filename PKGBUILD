@@ -1,5 +1,5 @@
 pkgname=ayugram-git
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='Desktop Telegram client with Ghost mode.'
 arch=('x86_64')
